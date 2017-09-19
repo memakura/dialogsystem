@@ -4,16 +4,16 @@
 
 - [Scratch 2 (Offline)](https://scratch.mit.edu/download)
     - ディスプレイに表情や目の動きを作るといった細かい制御は Scratch 側で書くことになるでしょうから，関数やクローンなど，慣れた機能を利用できる Scratch 2 にします．
-    - Raspberry Pi を使いたいですが，現時点では Adobe AIR が動かないので Scratch 1.4 を使わざるを得ません．Raspberry Pi は，[Scratch 3](https://wiki.scratch.mit.edu/wiki/Scratch_3.0) になるまで少し待つことにします．
+    - Raspberry Pi も使いたいですが，現時点では Adobe AIR が動かないので Scratch 1.4 が選択肢になります．Raspberry Pi は [Scratch 3](https://wiki.scratch.mit.edu/wiki/Scratch_3.0) になるまで少し待つことにします．
 - Windows
     - 小型の Windows PC は NUC やスティック PC などいろいろ出てきているので，まずは Windows (64bit) で動くことを確認してみます．
     - ただし今後 Mac や Linux に展開できるような認識，合成エンジンを選びます．
 - インストーラによる配布
     - ユーザはPython などの開発環境をインストールせずに済むよう，バイナリを配布します．（ただし Arduino IDE はインストールが必要です．）
     - 音声合成，音声認識，Arduino制御といった機能ごとにヘルパーアプリを用意し，必要なヘルパーだけインストールできるようにします．
+    [<img src="https://github.com/memakura/s2speech/raw/master/images/ScratchSpeechSynth.png" width="196">](https://github.com/memakura/s2speech/wiki) [<img src="https://github.com/memakura/speech2s/raw/master/images/ScratchSpeechRecog.png" width="196">](https://github.com/memakura/speech2s/wiki) [<img src="https://github.com/memakura/s2aio/raw/msi_installer/icons/ScratchArduino.png" width="196">](https://github.com/memakura/s2aio/wiki)
 
-[<img src="https://github.com/memakura/s2speech/raw/master/images/ScratchSpeechSynth.png" width="196">](https://github.com/memakura/s2speech/wiki) [<img src="https://github.com/memakura/speech2s/raw/master/images/ScratchSpeechRecog.png" width="196">](https://github.com/memakura/speech2s/wiki) [<img src="https://github.com/memakura/s2aio/raw/msi_installer/icons/ScratchArduino.png" width="196">](https://github.com/memakura/s2aio/wiki)
-（クリックするとそれぞれの解説ページへ）
+    （クリックするとそれぞれの解説ページへ）
 
 # 設計
 ## 拡張ブロックとヘルパーアプリ
@@ -41,7 +41,7 @@
 ## ヘルパーアプリの HTTP サーバは非同期 I/O ライブラリを利用
 - 各ヘルパーアプリはそれぞれ別のポートでHTTPサーバを立ち上げます．
 - Scratch の繰り返しループで大量にリクエストが飛んでくるかもしれません．サーバの軽量化を図るために非同期 I/O ライブラリを用います．すると，各ヘルパーアプリはシングルスレッドでありながら，複数のHTTPリクエストをコルーチンにより非同期並列処理できるようになります．
-- 実際，MrYsLab の s2aio では Python の [asyncio](https://docs.python.jp/3/library/asyncio.html) をベースにした [aiohttp](http://aiohttp.readthedocs.io/en/stable/) が用いられています．
+- 実際，MrYsLab の s2aio は Python の [asyncio](https://docs.python.jp/3/library/asyncio.html) をベースにした [aiohttp](http://aiohttp.readthedocs.io/en/stable/) を用いています．
 
 ## 開発言語およびバージョンの選択
 - asyncio を利用し，かつ後々に OpenCV を組み込むことを考えると，Python や C# がよい候補となります．
