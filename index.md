@@ -24,9 +24,9 @@
 
 |機能|ヘルパー名(githubへのリンク)と解説|ポート番号|ベースとなるエンジン|Scratch デモプロジェクト|
 |---|---|---|---|---|
-|音声合成|[s2speech](https://github.com/memakura/s2speech)<br>[[解説]](https://github.com/memakura/s2speech/wiki)|50210/TCP|[OpenJTalk](http://open-jtalk.sp.nitech.ac.jp/) | [s2speech_demo.sb2](https://github.com/memakura/s2speech/raw/master/00scratch/s2speech_demo.sb2) |
-|音声認識|[speech2s](https://github.com/memakura/speech2s)<br>[[解説]](https://github.com/memakura/speech2s/wiki)|50211/TCP|[Julius](http://julius.osdn.jp/)|[speech2s_demo.sb2](https://github.com/memakura/speech2s/raw/master/00scratch/speech2s_demo.sb2)|
-|Arduino との Firmata 通信|[s2aio](https://github.com/memakura/s2aio)<br>[[解説]](https://github.com/memakura/s2aio/wiki)|50209/TCP|[MrYsLab作 PyMata FirmataPlus](https://github.com/MrYsLab)|[s2aio_demo.sb2](https://github.com/memakura/s2aio/raw/msi_installer/00scratch/s2aio_demo.sb2)|
+|音声合成|[s2speech](https://github.com/memakura/s2speech)<br>[[解説]](https://github.com/memakura/s2speech/wiki)|50210/TCP (HTTP)|[OpenJTalk](http://open-jtalk.sp.nitech.ac.jp/) | [s2speech_demo.sb2](https://github.com/memakura/s2speech/raw/master/00scratch/s2speech_demo.sb2) |
+|音声認識|[speech2s](https://github.com/memakura/speech2s)<br>[[解説]](https://github.com/memakura/speech2s/wiki)|50211/TCP (HTTP)|[Julius](http://julius.osdn.jp/)|[speech2s_demo.sb2](https://github.com/memakura/speech2s/raw/master/00scratch/speech2s_demo.sb2)|
+|Arduino との Firmata 通信|[s2aio](https://github.com/memakura/s2aio)<br>[[解説]](https://github.com/memakura/s2aio/wiki)|50209/TCP (HTTP)|[MrYsLab作 PyMata FirmataPlus](https://github.com/MrYsLab)|[s2aio_demo.sb2](https://github.com/memakura/s2aio/raw/msi_installer/00scratch/s2aio_demo.sb2)|
 
 ヘルパーによってはさらに別のモジュールと通信します．
 
@@ -83,10 +83,10 @@
 - [Julius のモジュールモード](https://julius.osdn.jp/juliusbook/ja/desc_module.html)と通信して結果を取得します．
 
 #### 使用方法へのリンク
-- 解説: https://github.com/memakura/speech2s/wiki
+- 解説: [https://github.com/memakura/speech2s/wiki](https://github.com/memakura/speech2s/wiki)
 - 音声認識ではマイクの設定が重要になるため，Bluetooth ヘッドセットの使用方法などと合わせてまとめます．
     - [音声入力デバイス（マイク）の設定](https://github.com/memakura/speech2s/wiki/SetInputDevice)
-- 開発ページ: https://github.com/memakura/speech2s
+- 開発ページ: [https://github.com/memakura/speech2s](https://github.com/memakura/speech2s)
 
 #### ブロックの設計
 - `聞こえた言葉` のブロックには，`聞こえるまで最大(...)秒待つ` のブロックがトリガーになって認識結果が入ります．
@@ -102,7 +102,7 @@
 - 音響モデルは深層学習 (Deep Neural Network) で学習された DNN モデルと差し替え可能ですが，サイズが大きいためインストーラからは外します．
     - つまりインストーラから利用できるのは GMM モデル（混合ガウス分布, Gaussian Mixture Model）です．
     - DNN モデルはリポジトリには置いてあるので，Python をインストールして用いることができます．
-- そういえば [HARK](http://www.hark.jp/document/hark-document-ja/) に [Kaldi](https://github.com/kaldi-asr/kaldi) の [Julius のモジュールモード的インタフェース](http://www.hark.jp/document/hark-document-ja/subsec-KaldiDecoder.html)があったかもしれず，それを用いることができるのかもしれません．（未確認）
+- そういえば [HARK](http://www.hark.jp/document/hark-document-ja/) に [Kaldi](https://github.com/kaldi-asr/kaldi) の [Julius のモジュールモード的インタフェース](http://www.hark.jp/document/hark-document-ja/subsec-KaldiDecoder.html)があったかもしれず，それを用いることができるのかもしれません（未確認）．
 
 
 ### **s2aio (Arduino)**
@@ -115,9 +115,9 @@
 - [Firmata プロトコル](https://github.com/firmata/protocol)を用いてます．
 
 #### 使用方法へのリンク
-- 解説: https://github.com/memakura/s2aio/wiki
-- 開発ページ: https://github.com/memakura/s2aio
-- MrYsLab によるオリジナルの開発ページ: https://github.com/MrYsLab/s2aio
+- 解説: [https://github.com/memakura/s2aio/wiki](https://github.com/memakura/s2aio/wiki)
+- 開発ページ: [https://github.com/memakura/s2aio](https://github.com/memakura/s2aio)
+- MrYsLab によるオリジナルの開発ページ: [https://github.com/MrYsLab/s2aio](https://github.com/MrYsLab/s2aio)
 - オリジナルに対する主な変更点
     - ブロックの日本語化
     - aiohttp の使用バージョン変更(0.22.4 -> 2.1.0) に伴う修正
