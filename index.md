@@ -25,19 +25,18 @@
 - s2aio は [MrYsLab](https://github.com/MrYsLab)が開発したものです．これを一部アップデート（日本語化，その他）した上でインストーラを作成します．
 
 |機能|ヘルパー名(githubへのリンク)と解説|ポート番号|ベースとなるエンジン|Scratch デモプロジェクト|
-|---|---|---|---|---|---|
-|音声合成|[s2speech](https://github.com/memakura/s2speech)<br>[[解説]](https://github.com/memakura/s2speech/wiki)|50210|[OpenJTalk](http://open-jtalk.sp.nitech.ac.jp/) | [s2speech_demo.sb2](https://github.com/memakura/s2speech/raw/master/00scratch/s2speech_demo.sb2) | https://github.com/memakura/s2speech/wiki|[s2speech_demo.sb2](https://github.com/memakura/s2speech/raw/master/00scratch/s2speech_demo.sb2)|
-|音声認識|[speech2s](https://github.com/memakura/speech2s)<br>[[解説]](https://github.com/memakura/speech2s/wiki)|50211|[Julius](http://julius.osdn.jp/)|[speech2s_demo.sb2](https://github.com/memakura/speech2s/raw/master/00scratch/speech2s_demo.sb2)
+|---|---|---|---|---|
+|音声合成|[s2speech](https://github.com/memakura/s2speech)<br>[[解説]](https://github.com/memakura/s2speech/wiki)|50210|[OpenJTalk](http://open-jtalk.sp.nitech.ac.jp/) | [s2speech_demo.sb2](https://github.com/memakura/s2speech/raw/master/00scratch/s2speech_demo.sb2) |
+|音声認識|[speech2s](https://github.com/memakura/speech2s)<br>[[解説]](https://github.com/memakura/speech2s/wiki)|50211|[Julius](http://julius.osdn.jp/)|[speech2s_demo.sb2](https://github.com/memakura/speech2s/raw/master/00scratch/speech2s_demo.sb2)|
 |Arduino との Firmata 通信|[s2aio](https://github.com/memakura/s2aio)<br>[[解説]](https://github.com/memakura/s2aio/wiki)|50209|[MrYsLab作 PyMata FirmataPlus](https://github.com/MrYsLab)|[s2aio_demo.sb2](https://github.com/memakura/s2aio/raw/msi_installer/00scratch/s2aio_demo.sb2)|
 
-
-ただし，ヘルパーによってはさらに別のモジュールと通信します．
+ヘルパーによってはさらに別のモジュールと通信します．
 
 - speech2s は Julius と 10500 (TCP) で通信
 - s2aio は Arduino と COMポートにて Firmataプロトコルで通信
 
 想定するシステムの全体像は以下のような図になります．
-![systemdesign-120.png](https://github.com/memakura/dialogsystem/systemdesign-120.png)
+![systemdesign-120.png](systemdesign-120.png)
 
 
 
