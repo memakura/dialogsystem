@@ -79,7 +79,7 @@
 - 追加の hts ファイルはユーザにアクセス権限のあるユーザ領域に置けるようにします．
 
 ### **speech2s (Julius)**
-[<img src="https://github.com/memakura/speech2s/raw/master/images/ScratchSpeechRecog.png" width="196" align="top>](https://github.com/memakura/speech2s/wiki) [<img src="https://github.com/memakura/speech2s/raw/master/images/block_and_sample_JA.png" align="top">
+[<img src="https://github.com/memakura/speech2s/raw/master/images/ScratchSpeechRecog.png" width="196" align="top">](https://github.com/memakura/speech2s/wiki) [<img src="https://github.com/memakura/speech2s/raw/master/images/block_and_sample_JA.png" align="top">
 
 #### 機能
 - 音声をテキストに変換します．
