@@ -55,17 +55,19 @@
 - 一部はあえてひらがなとせず，小5-6年習得の漢字を使用します．（「無効」，「品詞」など）
 - 必要があれば，全体をひらがなにしたブロックも後ほど加えることにします．
 
+
 ## 各ヘルパーアプリの説明
+
 ### **s2speech (OpenJTalk)**
-[<img src="https://github.com/memakura/s2speech/raw/master/images/ScratchSpeechSynth.png" width="196">](https://github.com/memakura/s2speech/wiki) ![block_and_sample](https://github.com/memakura/s2speech/raw/master/images/block_and_sample_JA.png)
+[<img src="https://github.com/memakura/s2speech/raw/master/images/ScratchSpeechSynth.png" width="196" align="top">](https://github.com/memakura/s2speech/wiki) ![block_and_sample](https://github.com/memakura/s2speech/raw/master/images/block_and_sample_JA.png)
 
 #### 機能
 - テキストを入力すると音声を合成します．
 - OpenJTalkとMecab のDLLを利用します（[NVDA日本語版で用いられている python ラッパーを一部利用](https://github.com/nvdajp/python-jtalk)）．
 
 #### 使用方法へのリンク
-- 解説: https://github.com/memakura/s2speech/wiki
-- 開発ページ: https://github.com/memakura/s2speech
+- 解説: [https://github.com/memakura/s2speech/wiki](https://github.com/memakura/s2speech/wiki)
+- 開発ページ: [https://github.com/memakura/s2speech](https://github.com/memakura/s2speech)
 
 #### ブロックの設計
 - 再生を待たずに次へ進む `[...]と話す` と，再生を待つ `[...]と話す(終わるまで待つ)` の二種類のブロックを用意します．
@@ -77,7 +79,7 @@
 - 追加の hts ファイルはユーザにアクセス権限のあるユーザ領域に置けるようにします．
 
 ### **speech2s (Julius)**
-[<img src="https://github.com/memakura/speech2s/raw/master/images/ScratchSpeechRecog.png" width="196">](https://github.com/memakura/speech2s/wiki) ![block_and_sample](https://github.com/memakura/speech2s/raw/master/images/block_and_sample_JA.png)
+[<img src="https://github.com/memakura/speech2s/raw/master/images/ScratchSpeechRecog.png" width="196" align="top>](https://github.com/memakura/speech2s/wiki) ![block_and_sample](https://github.com/memakura/speech2s/raw/master/images/block_and_sample_JA.png)
 
 #### 機能
 - 音声をテキストに変換します．
@@ -108,7 +110,7 @@
 
 ### **s2aio (Arduino)**
 
-[<img src="https://github.com/memakura/s2aio/raw/msi_installer/icons/ScratchArduino.png" width="196">](https://github.com/memakura/s2aio/wiki) ![block_and_sample](https://github.com/memakura/s2aio/wiki/block_and_sample_JA.png)
+[<img src="https://github.com/memakura/s2aio/raw/msi_installer/icons/ScratchArduino.png" width="196" algin="top">](https://github.com/memakura/s2aio/wiki) ![block_and_sample](https://github.com/memakura/s2aio/wiki/block_and_sample_JA.png)
 
 #### 機能
 - Arduino とデジタル／アナログ値の入出力ができます．
