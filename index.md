@@ -23,7 +23,7 @@
 - Scratch 2 が接続できるヘルパーアプリを以下のように用意し，それぞれと異なるポート番号で通信することにします．
 - s2aio は [MrYsLab](https://github.com/MrYsLab)が開発したものです．これを一部アップデート（日本語化，その他）した上でインストーラを作成します．
 
-|機能|ヘルパー名(githubへのリンク)と解説|ポート番号|ベースとなるエンジン|Scratch デモプロジェクト|
+|機能|ヘルパー名 (github へのリンク) と解説|ポート番号|ベースとなるエンジン|Scratch デモプロジェクト|
 |---|---|---|---|---|
 |音声合成|[s2speech](https://github.com/memakura/s2speech)<br>[[解説]](https://github.com/memakura/s2speech/wiki)|50210/TCP (HTTP)|[OpenJTalk](http://open-jtalk.sp.nitech.ac.jp/) | [s2speech_demo.sb2](https://github.com/memakura/s2speech/raw/master/00scratch/s2speech_demo.sb2) |
 |音声認識|[speech2s](https://github.com/memakura/speech2s)<br>[[解説]](https://github.com/memakura/speech2s/wiki)|50211/TCP (HTTP)|[Julius](http://julius.osdn.jp/)|[speech2s_demo.sb2](https://github.com/memakura/speech2s/raw/master/00scratch/speech2s_demo.sb2)|
@@ -59,7 +59,7 @@
 ## 各ヘルパーアプリの説明
 
 ### **s2speech (OpenJTalk)**
-[<img src="https://github.com/memakura/s2speech/raw/master/images/ScratchSpeechSynth.png" width="196" align="top">](https://github.com/memakura/s2speech/wiki) [<img src="https://github.com/memakura/s2speech/raw/master/images/block_and_sample_JA.png" align="top">
+[<img src="https://github.com/memakura/s2speech/raw/master/images/ScratchSpeechSynth.png" width="196" align="top">](https://github.com/memakura/s2speech/wiki) <img src="https://github.com/memakura/s2speech/raw/master/images/block_and_sample_JA.png" align="top">
 
 #### 機能
 - テキストを入力すると音声を合成します．
