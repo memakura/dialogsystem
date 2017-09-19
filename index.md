@@ -57,7 +57,7 @@
 
 ## 各ヘルパーアプリの説明
 ### **s2speech (OpenJTalk)**
-[![s2speech](https://github.com/memakura/s2speech/raw/master/images/ScratchSpeechSynth.png)](https://github.com/memakura/s2speech/wiki) ![block_and_sample](https://github.com/memakura/s2speech/raw/master/images/block_and_sample_JA.png)
+[<img src="https://github.com/memakura/s2speech/raw/master/images/ScratchSpeechSynth.png" width="196">](https://github.com/memakura/s2speech/wiki) ![block_and_sample](https://github.com/memakura/s2speech/raw/master/images/block_and_sample_JA.png)
 
 #### 機能
 - テキストを入力すると音声を合成します．
@@ -77,7 +77,7 @@
 - 追加の hts ファイルはユーザにアクセス権限のあるユーザ領域に置けるようにします．
 
 ### **speech2s (Julius)**
-[![speech2s](https://github.com/memakura/speech2s/raw/master/images/ScratchSpeechRecog.png)](https://github.com/memakura/speech2s/wiki) ![block_and_sample](https://github.com/memakura/speech2s/raw/master/images/block_and_sample_JA.png)
+[<img src="https://github.com/memakura/speech2s/raw/master/images/ScratchSpeechRecog.png" width="196">](https://github.com/memakura/speech2s/wiki) ![block_and_sample](https://github.com/memakura/speech2s/raw/master/images/block_and_sample_JA.png)
 
 #### 機能
 - 音声をテキストに変換します．
@@ -108,7 +108,7 @@
 
 ### **s2aio (Arduino)**
 
-[![s2aio](https://github.com/memakura/s2aio/raw/msi_installer/icons/ScratchArduino.png)](https://github.com/memakura/s2aio/wiki) ![block_and_sample](https://github.com/memakura/s2aio/wiki/block_and_sample_JA.png)
+[<img src="https://github.com/memakura/s2aio/raw/msi_installer/icons/ScratchArduino.png" width="196">](https://github.com/memakura/s2aio/wiki) ![block_and_sample](https://github.com/memakura/s2aio/wiki/block_and_sample_JA.png)
 
 #### 機能
 - Arduino とデジタル／アナログ値の入出力ができます．
