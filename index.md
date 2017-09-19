@@ -1,4 +1,4 @@
-# Scratch 2.0 オフラインで使える対話ロボット／対話システム用ブロック
+# Scratch 2.0 オフラインで使える音声対話ロボット／音声対話システム用ブロック
 
 気軽に対話システムや対話ロボットのプロトタイプを作成するには，音声合成，音声認識，および電子回路（目が光る，頭が動く）を Scratch で使えるとよさそうです．それに，常にインターネットに接続できる環境にいるとは限らないので，すべてオフラインで行えるようにしたいところ．ここではそんな Scratch ブロックを実現するための設計方針をまとめます．
 
@@ -12,9 +12,7 @@
     - ユーザはPython などの開発環境をインストールせずに済むよう，バイナリを配布します．（ただし Arduino IDE はインストールが必要です．）
     - 音声合成，音声認識，Arduino制御といった機能ごとにヘルパーアプリを用意し，必要なヘルパーだけインストールできるようにします．
 
-
-[![s2speech](https://github.com/memakura/s2speech/raw/master/images/ScratchSpeechSynth.png)](https://github.com/memakura/s2speech/wiki) [![speech2s](https://github.com/memakura/speech2s/raw/master/images/ScratchSpeechRecog.png)](https://github.com/memakura/speech2s/wiki) [![s2aio](https://github.com/memakura/s2aio/raw/msi_installer/icons/ScratchArduino.png)](https://github.com/memakura/s2aio/wiki)
-
+[<img src="https://github.com/memakura/s2speech/raw/master/images/ScratchSpeechSynth.png" width="196">](https://github.com/memakura/s2speech/wiki) [<img src="https://github.com/memakura/speech2s/raw/master/images/ScratchSpeechRecog.png" width="196">](https://github.com/memakura/speech2s/wiki) [<img src="https://github.com/memakura/s2aio/raw/msi_installer/icons/ScratchArduino.png" width="196">](https://github.com/memakura/s2aio/wiki)
 （クリックするとそれぞれの解説ページへ）
 
 # 設計
@@ -26,36 +24,38 @@
 
 |機能|ヘルパー名(githubへのリンク)と解説|ポート番号|ベースとなるエンジン|Scratch デモプロジェクト|
 |---|---|---|---|---|
-|音声合成|[s2speech](https://github.com/memakura/s2speech)<br>[[解説]](https://github.com/memakura/s2speech/wiki)|50210|[OpenJTalk](http://open-jtalk.sp.nitech.ac.jp/) | [s2speech_demo.sb2](https://github.com/memakura/s2speech/raw/master/00scratch/s2speech_demo.sb2) |
-|音声認識|[speech2s](https://github.com/memakura/speech2s)<br>[[解説]](https://github.com/memakura/speech2s/wiki)|50211|[Julius](http://julius.osdn.jp/)|[speech2s_demo.sb2](https://github.com/memakura/speech2s/raw/master/00scratch/speech2s_demo.sb2)|
-|Arduino との Firmata 通信|[s2aio](https://github.com/memakura/s2aio)<br>[[解説]](https://github.com/memakura/s2aio/wiki)|50209|[MrYsLab作 PyMata FirmataPlus](https://github.com/MrYsLab)|[s2aio_demo.sb2](https://github.com/memakura/s2aio/raw/msi_installer/00scratch/s2aio_demo.sb2)|
+|音声合成|[s2speech](https://github.com/memakura/s2speech)<br>[[解説]](https://github.com/memakura/s2speech/wiki)|50210/TCP|[OpenJTalk](http://open-jtalk.sp.nitech.ac.jp/) | [s2speech_demo.sb2](https://github.com/memakura/s2speech/raw/master/00scratch/s2speech_demo.sb2) |
+|音声認識|[speech2s](https://github.com/memakura/speech2s)<br>[[解説]](https://github.com/memakura/speech2s/wiki)|50211/TCP|[Julius](http://julius.osdn.jp/)|[speech2s_demo.sb2](https://github.com/memakura/speech2s/raw/master/00scratch/speech2s_demo.sb2)|
+|Arduino との Firmata 通信|[s2aio](https://github.com/memakura/s2aio)<br>[[解説]](https://github.com/memakura/s2aio/wiki)|50209/TCP|[MrYsLab作 PyMata FirmataPlus](https://github.com/MrYsLab)|[s2aio_demo.sb2](https://github.com/memakura/s2aio/raw/msi_installer/00scratch/s2aio_demo.sb2)|
 
 ヘルパーによってはさらに別のモジュールと通信します．
 
-- speech2s は Julius と 10500 (TCP) で通信
-- s2aio は Arduino と COMポートにて Firmataプロトコルで通信
+- speech2s は Julius と 10500/TCP で通信
+- s2aio は Arduino と COMポート/Firmataプロトコルで通信
 
 想定するシステムの全体像は以下のような図になります．
 ![systemdesign-120.png](systemdesign-120.png)
 
 
 
+## ヘルパーアプリの HTTP サーバは非同期 I/O ライブラリを利用
+- 各ヘルパーアプリはそれぞれ別のポートでHTTPサーバを立ち上げます．
+- Scratch の繰り返しループで大量にリクエストが飛んでくるかもしれません．サーバの軽量化を図るために非同期 I/O ライブラリを用います．すると，各ヘルパーアプリはシングルスレッドでありながら，複数のHTTPリクエストをコルーチンにより非同期並列処理できるようになります．
+- 実際，MrYsLab の s2aio では Python の [asyncio](https://docs.python.jp/3/library/asyncio.html) をベースにした [aiohttp](http://aiohttp.readthedocs.io/en/stable/) が用いられています．
+
 ## 開発言語およびバージョンの選択
-- asyncio を利用し，かつ後々に OpenCV を組み込むことを考えると，Python や C# が候補となります．
-- s2aio の開発で Python が使われていることや，インストーラの作成が簡単なことから，Python とします．
+- asyncio を利用し，かつ後々に OpenCV を組み込むことを考えると，Python や C# がよい候補となります．
+- s2aio の開発で Python が使われていることや，インストーラの作成が簡単なことから Python を開発言語とします．
 - asyncio の async/await は3.5以上，OpenCV が安定に動くのは3.5以下であるため，Python 3.5 を利用します．
 - インストーラ (msi) の生成には [scratio](https://lets.makewitharduino.com/sample/scratch/) に倣い [cx_Freeze](https://anthony-tuininga.github.io/cx_Freeze/) を利用します．
 
-## ヘルパーアプリの HTTPサーバは軽量スレッドを利用
-- 各ヘルパーアプリはそれぞれ別のポートでHTTPサーバを立ち上げます．
-- Scratch の制御ループで大量にリクエストが飛んでくるかもしれません．そこで，s2speech と speech2 でも s2aio と同様に，Python の [aiohttp](http://aiohttp.readthedocs.io/en/stable/) を使います．[asyncio](https://docs.python.jp/3/library/asyncio.html) を利用しているため，各ヘルパーアプリはシングルスレッドでありながら，複数のHTTPリクエストをコルーチンにより非同期並列処理します．
-
 ## ブロック記載の漢字
 - ユーザは小3-4年の漢字が読める子供から広く想定します．
-- ただし一部はあえてひらがなとせず，小5-6年習得の漢字を使用します．（「無効」，「品詞」など）
+- 一部はあえてひらがなとせず，小5-6年習得の漢字を使用します．（「無効」，「品詞」など）
+- 必要があれば，全体をひらがなにしたブロックも後ほど加えることにします．
 
 ## 各ヘルパーアプリの説明
-### s2speech (OpenJTalk)
+### **s2speech (OpenJTalk)**
 [![s2speech](https://github.com/memakura/s2speech/raw/master/images/ScratchSpeechSynth.png)](https://github.com/memakura/s2speech/wiki) ![block_and_sample](https://github.com/memakura/s2speech/raw/master/images/block_and_sample_JA.png)
 
 #### 機能
@@ -75,7 +75,7 @@
 - 声は数種類のみとし，あとは hts 形式で自由に追加できるようにします．
 - 追加の hts ファイルはユーザにアクセス権限のあるユーザ領域に置けるようにします．
 
-### speech2s (Julius)
+### **speech2s (Julius)**
 [![speech2s](https://github.com/memakura/speech2s/raw/master/images/ScratchSpeechRecog.png)](https://github.com/memakura/speech2s/wiki) ![block_and_sample](https://github.com/memakura/speech2s/raw/master/images/block_and_sample_JA.png)
 
 #### 機能
@@ -105,7 +105,7 @@
 - そういえば [HARK](http://www.hark.jp/document/hark-document-ja/) に [Kaldi](https://github.com/kaldi-asr/kaldi) の [Julius のモジュールモード的インタフェース](http://www.hark.jp/document/hark-document-ja/subsec-KaldiDecoder.html)があったかもしれず，それを用いることができるのかもしれません．（未確認）
 
 
-### s2aio (Arduino)
+### **s2aio (Arduino)**
 
 [![s2aio](https://github.com/memakura/s2aio/raw/msi_installer/icons/ScratchArduino.png)](https://github.com/memakura/s2aio/wiki) ![block_and_sample](https://github.com/memakura/s2aio/wiki/block_and_sample_JA.png)
 
