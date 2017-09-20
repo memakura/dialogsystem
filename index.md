@@ -42,18 +42,21 @@
 
 
 ## ヘルパーの HTTP サーバは非同期 I/O ライブラリを利用
+
 - 各ヘルパーはそれぞれ別のポートでHTTPサーバを立ち上げます．
 - Scratch の繰り返しループで大量にリクエストが飛んでくるかもしれません．サーバの軽量化を図るために非同期 I/O ライブラリを用います．すると，各ヘルパーはシングルスレッドでありながら，複数のHTTPリクエストを非同期並列処理できるようになります．
 - 実際，MrYsLab の s2aio は Python の [asyncio](https://docs.python.jp/3/library/asyncio.html) をベースにした [aiohttp](http://aiohttp.readthedocs.io/en/stable/) を用いています．
 - Python によるヘルパーの作成方法を[こちらの記事](https://qiita.com/memakura/items/fb48d7f6fb6b4b88b5bb)にまとめます．
 
 ## 開発言語およびバージョンの選択
+
 - asyncio を利用し，かつ後々に OpenCV を組み込むことを考えると，Python や C# がよい候補となります．
 - s2aio の開発で Python が使われていることや，インストーラの作成が簡単なことから Python を開発言語とします．
 - asyncio の async/await は3.5以上，OpenCV が安定に動くのは3.5以下であるため，Python 3.5 を利用します．
 - インストーラ (msi) の生成には [scratio](https://lets.makewitharduino.com/sample/scratch/) に倣い [cx_Freeze](https://anthony-tuininga.github.io/cx_Freeze/) を利用します．
 
 ## ブロック記載の漢字
+
 - ユーザは小3-4年の漢字が読める子供から広く想定します．
 - 一部はあえてひらがなとせず，小5-6年習得の漢字を使用します．（「無効」，「品詞」など）
 - 必要があれば，全体をひらがなにしたブロックも後ほど加えることにします．
@@ -62,39 +65,48 @@
 ## 各ヘルパー (helper app) の説明
 
 ### **s2speech (OpenJTalk)**
+
 [<img src="https://github.com/memakura/s2speech/raw/master/images/ScratchSpeechSynth.png" width="196" align="top">](https://github.com/memakura/s2speech/wiki) <img src="https://github.com/memakura/s2speech/raw/master/images/block_and_sample_JA.png" align="top">
 
 #### 機能
+
 - テキストを入力すると音声を合成します．
 - OpenJTalkとMecab のDLLを利用します（[NVDA日本語版で用いられている python ラッパーを一部利用](https://github.com/nvdajp/python-jtalk)）．
 
 #### 使用方法へのリンク
+
 - 解説: [https://github.com/memakura/s2speech/wiki](https://github.com/memakura/s2speech/wiki)
 - 開発ページ: [https://github.com/memakura/s2speech](https://github.com/memakura/s2speech)
 
 #### ブロックの設計
+
 - 再生を待たずに次へ進む `[...]と話す` と，再生を待つ `[...]と話す(終わるまで待つ)` の二種類のブロックを用意します．
     - 前者の**待たない**ブロックを使うことで，話しながら口パクすることができます．
 - 使い方の詳細な例は[デモプロジェクト(s2speech_demo.sb2)](https://github.com/memakura/s2speech/raw/master/00scratch/s2speech_demo.sb2)にまとめます．
 
 #### 拡張性
+
 - 声は数種類のみとし，あとは hts 形式で自由に追加できるようにします．
 - 追加の hts ファイルはユーザにアクセス権限のあるユーザ領域に置けるようにします．
 
 ### **speech2s (Julius)**
+
 [<img src="https://github.com/memakura/speech2s/raw/master/images/ScratchSpeechRecog.png" width="196" align="top">](https://github.com/memakura/speech2s/wiki) <img src="https://github.com/memakura/speech2s/raw/master/images/block_and_sample_JA.png" align="top">
 
 #### 機能
+
 - 音声をテキストに変換します．
 - [Julius のモジュールモード](https://julius.osdn.jp/juliusbook/ja/desc_module.html)と通信して結果を取得します．
 
 #### 使用方法へのリンク
+
 - 解説: [https://github.com/memakura/speech2s/wiki](https://github.com/memakura/speech2s/wiki)
 - 音声認識ではマイクの設定が重要になるため，Bluetooth ヘッドセットの使用方法などと合わせてまとめます．
     - [音声入力デバイス（マイク）の設定](https://github.com/memakura/speech2s/wiki/SetInputDevice)
 - 開発ページ: [https://github.com/memakura/speech2s](https://github.com/memakura/speech2s)
 
 #### ブロックの設計
+
 - `聞こえた言葉` のブロックには，`聞こえるまで最大(...)秒待つ` のブロックがトリガーになって認識結果が入ります．
 - 一方で，`耳に入った言葉` には常に（連続的に）認識結果が入ります（Juliusの連続音声認識）．
     - 連続認識によって，認識開始のトリガーが無くても「起きて」といったキーワードへ反応できます．
@@ -105,6 +117,7 @@
 - 使い方の詳細な例は[デモプロジェクト(speech2s_demo.sb2)](https://github.com/memakura/speech2s/raw/master/00scratch/speech2s_demo.sb2)にまとめます．
 
 #### 拡張性
+
 - 音響モデルは深層学習 (Deep Neural Network) で学習された DNN モデルと差し替え可能ですが，サイズが大きいためインストーラからは外します．
     - つまりインストーラから利用できるのは GMM モデル（混合ガウス分布, Gaussian Mixture Model）です．
     - DNN モデルはリポジトリには置いてあるので，Python をインストールして用いることができます．
@@ -116,11 +129,13 @@
 [<img src="https://github.com/memakura/s2aio/raw/msi_installer/icons/ScratchArduino.png" width="196" algin="top">](https://github.com/memakura/s2aio/wiki) <img src="https://github.com/memakura/s2aio/wiki/block_and_sample_JA.png" align="top">
 
 #### 機能
+
 - Arduino とデジタル／アナログ値の入出力ができます．
 - サーボも対応しています．
 - [Firmata プロトコル](https://github.com/firmata/protocol)を用いてます．
 
 #### 使用方法へのリンク
+
 - 解説: [https://github.com/memakura/s2aio/wiki](https://github.com/memakura/s2aio/wiki)
 - 開発ページ: [https://github.com/memakura/s2aio](https://github.com/memakura/s2aio)
 - MrYsLab によるオリジナルの開発ページ: [https://github.com/MrYsLab/s2aio](https://github.com/MrYsLab/s2aio)
@@ -130,10 +145,12 @@
     - インストーラ用コード，アイコン追加
 
 #### ブロックの設計
+
 - [オリジナルの s2aio におけるブロックの設計](https://github.com/MrYsLab/s2aio/wiki/s2aio-Programming-Blocks) とします．
 - s2aio の前身となる [s2a_fm](https://github.com/MrYsLab/s2a_fm) では，日本語化の際に日本語の語順に合わせて HTTP GET のパラメタ順序を入れ替えるような拡張がされましたが，s2aio ではひとまず英語のままの順序とします．
     - ピンのモード設定（有効化と無効化）がやや不自然ですが，`有効化` や `無効化` といったキーワードが前にあったほうが間違えにくいかもしれない，という判断です．
     - 「有効化」や「無効化」という用語がやや専門的かとも思いましたが，広く使われているのでそのままにします．
 
 #### 拡張性
+
 - 内部的には Sonar が実装されているため，距離センサのブロックを追加できるかもしれません．
