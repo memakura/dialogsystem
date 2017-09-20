@@ -10,17 +10,17 @@
     - ただし今後 Mac や Linux に展開できるような認識，合成エンジンを選びます．
 - インストーラによる配布
     - ユーザはPython などの開発環境をインストールせずに済むよう，バイナリを配布します．（ただし Arduino IDE はインストールが必要です．）
-    - 音声合成，音声認識，Arduino制御といった機能ごとにヘルパーアプリを用意し，必要なヘルパーだけインストールできるようにします．
+    - 音声合成，音声認識，Arduino制御といった機能ごとにヘルパーアプリケーション（以下，ヘルパー）を用意し，必要なヘルパーだけインストールできるようにします．
 
     [<img src="https://github.com/memakura/s2speech/raw/master/images/ScratchSpeechSynth.png" width="196">](https://github.com/memakura/s2speech/wiki) [<img src="https://github.com/memakura/speech2s/raw/master/images/ScratchSpeechRecog.png" width="196">](https://github.com/memakura/speech2s/wiki) [<img src="https://github.com/memakura/s2aio/raw/msi_installer/icons/ScratchArduino.png" width="196">](https://github.com/memakura/s2aio/wiki)
 
     （クリックするとそれぞれの解説ページへ）
 
 # 設計
-## 拡張ブロックとヘルパーアプリ
+## 拡張ブロックとヘルパーアプリケーション
 - Scratch 2 オフライン版では，`シフト` を押しながら [ファイル] メニューを選ぶと [実験的なHTTP拡張を読み込み] を選べます．これで独自ブロックを追加できます．（一方，オンラインは JavaScript の関数で拡張しますし，Scratch 3 もおそらくその流れだと思います．）
-- HTTP拡張で独自に追加したブロックは，ローカルの HTTPサーバと通信し，独自の処理や値の取得ができます．このローカルに用意する HTTPサーバは[ヘルパーアプリ (helper app)](https://wiki.scratch.mit.edu/wiki/Scratch_Extension) と呼ばれます．
-- Scratch 2 が接続できるヘルパーアプリを以下のように用意し，それぞれと異なるポート番号で通信することにします．
+- HTTP拡張で独自に追加したブロックは，ローカルの HTTPサーバと通信し，独自の処理や値の取得ができます．このローカルに用意する HTTPサーバは[ヘルパー (helper app)](https://wiki.scratch.mit.edu/wiki/Scratch_Extension) と呼ばれます．
+- Scratch 2 が接続できるヘルパーを以下のように用意し，それぞれと異なるポート番号で通信することにします．
 - s2aio は [MrYsLab](https://github.com/MrYsLab)が開発したものです．これを一部アップデート（日本語化，その他）した上でインストーラを作成します．
 
 |機能|ヘルパー名 (github へのリンク) と解説|ポート番号|ベースとなるエンジン|Scratch デモプロジェクト|
@@ -39,10 +39,11 @@
 
 
 
-## ヘルパーアプリの HTTP サーバは非同期 I/O ライブラリを利用
-- 各ヘルパーアプリはそれぞれ別のポートでHTTPサーバを立ち上げます．
-- Scratch の繰り返しループで大量にリクエストが飛んでくるかもしれません．サーバの軽量化を図るために非同期 I/O ライブラリを用います．すると，各ヘルパーアプリはシングルスレッドでありながら，複数のHTTPリクエストをコルーチンにより非同期並列処理できるようになります．
+## ヘルパーの HTTP サーバは非同期 I/O ライブラリを利用
+- 各ヘルパーはそれぞれ別のポートでHTTPサーバを立ち上げます．
+- Scratch の繰り返しループで大量にリクエストが飛んでくるかもしれません．サーバの軽量化を図るために非同期 I/O ライブラリを用います．すると，各ヘルパーはシングルスレッドでありながら，複数のHTTPリクエストを非同期並列処理できるようになります．
 - 実際，MrYsLab の s2aio は Python の [asyncio](https://docs.python.jp/3/library/asyncio.html) をベースにした [aiohttp](http://aiohttp.readthedocs.io/en/stable/) を用いています．
+- Python によるヘルパーの作成方法を[こちらの記事](https://qiita.com/memakura/items/fb48d7f6fb6b4b88b5bb)にまとめます．
 
 ## 開発言語およびバージョンの選択
 - asyncio を利用し，かつ後々に OpenCV を組み込むことを考えると，Python や C# がよい候補となります．
@@ -56,7 +57,7 @@
 - 必要があれば，全体をひらがなにしたブロックも後ほど加えることにします．
 
 
-## 各ヘルパーアプリの説明
+## 各ヘルパー (helper app) の説明
 
 ### **s2speech (OpenJTalk)**
 [<img src="https://github.com/memakura/s2speech/raw/master/images/ScratchSpeechSynth.png" width="196" align="top">](https://github.com/memakura/s2speech/wiki) <img src="https://github.com/memakura/s2speech/raw/master/images/block_and_sample_JA.png" align="top">
