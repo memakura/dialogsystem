@@ -9,7 +9,7 @@
     - 小型の Windows PC は NUC やスティック PC などいろいろ出てきているので，まずは Windows (64bit) で動くことを確認してみます．
     - ただし今後 Mac や Linux に展開できるような認識，合成エンジンを選びます．
 - インストーラによる配布
-    - ユーザはPython などの開発環境をインストールせずに済むよう，バイナリを配布します．（ただし Arduino IDE はインストールが必要です．）
+    - ユーザはPython などの開発環境をインストールせずに済むよう，実行形式で配布します．
     - 音声合成，音声認識，Arduino制御といった機能ごとにヘルパーアプリケーション（以下，ヘルパー）を用意し，必要なヘルパーだけインストールできるようにします．
 
     [<img src="https://github.com/memakura/s2speech/raw/master/images/ScratchSpeechSynth.png" width="196">](https://github.com/memakura/s2speech/wiki) [<img src="https://github.com/memakura/speech2s/raw/master/images/ScratchSpeechRecog.png" width="196">](https://github.com/memakura/speech2s/wiki) [<img src="https://github.com/memakura/s2aio/raw/msi_installer/icons/ScratchArduino.png" width="196">](https://github.com/memakura/s2aio/wiki)
