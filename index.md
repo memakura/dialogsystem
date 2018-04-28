@@ -12,7 +12,7 @@
     - ユーザはPython などの開発環境をインストールせずに済むよう，実行形式で配布します．
     - 音声合成，音声認識，Arduino制御といった機能ごとにヘルパーアプリケーション（以下，ヘルパー）を用意し，必要なヘルパーだけインストールできるようにします．
 
-    [<img src="https://github.com/memakura/s2speech/raw/master/images/ScratchSpeechSynth.png" width="196">](https://github.com/memakura/s2speech/wiki) [<img src="https://github.com/memakura/speech2s/raw/master/images/ScratchSpeechRecog.png" width="196">](https://github.com/memakura/speech2s/wiki) [<img src="https://github.com/memakura/s2aio/raw/msi_installer/icons/ScratchArduino.png" width="196">](https://github.com/memakura/s2aio/wiki)
+    [<img src="https://github.com/memakura/s2speech/raw/master/images/ScratchSpeechSynth.png" width="128">](https://github.com/memakura/s2speech/wiki) [<img src="https://github.com/memakura/speech2s/raw/master/images/ScratchSpeechRecog.png" width="128">](https://github.com/memakura/speech2s/wiki) [<img src="https://github.com/memakura/s2aio/raw/msi_installer/icons/ScratchArduino.png" width="128">](https://github.com/memakura/s2aio/wiki) [<img src="https://github.com/memakura/s2microbit-ble/raw/master/images/s2microbit-ble.png" width="128">](https://memakura.github.io/s2microbit-ble/)
 
     （クリックするとそれぞれの解説ページへ）
 
@@ -24,17 +24,22 @@
 - HTTP拡張で独自に追加したブロックは，ローカルの HTTPサーバと通信し，独自の処理や値の取得ができます．このローカルに用意する HTTPサーバは[ヘルパー (helper app)](https://wiki.scratch.mit.edu/wiki/Scratch_Extension) と呼ばれます．
 - Scratch 2 が接続できるヘルパーを以下のように用意し，それぞれと異なるポート番号で通信することにします．
 - s2aio は [MrYsLab](https://github.com/MrYsLab)が開発したものです．これを一部アップデート（日本語化，その他）した上でインストーラを作成します．
+- [s2microbit-ble](https://memakura.github.io/s2microbit-ble/) は BBC micro:bit と一般的なBluetooth(4.0以上)のアダプタで接続するために作成しました．ブロックは MrYsLabの [s2m](https://github.com/MrYsLab/s2m) にできるだけ合わせ，加えて加速度センサなどのブロックを用意しました．互換性を重視して s2m とポート番号を合わせたため，s2aio と同時には使えないようにしています．
 
-|機能|ヘルパー名 (github へのリンク) と解説|ポート番号|ベースとなるエンジン|Scratch デモプロジェクト|
+|機能|ヘルパー名 (github へのリンク) と解説|ポート番号|ベースとなるエンジン/API|Scratch デモプロジェクト|
 |---|---|---|---|---|
 |音声合成|[s2speech](https://github.com/memakura/s2speech)<br>[[解説]](https://github.com/memakura/s2speech/wiki)|50210/TCP (HTTP)|[OpenJTalk](http://open-jtalk.sp.nitech.ac.jp/) | [s2speech_demo.sb2](https://github.com/memakura/s2speech/raw/master/00scratch/s2speech_demo.sb2) |
 |音声認識|[speech2s](https://github.com/memakura/speech2s)<br>[[解説]](https://github.com/memakura/speech2s/wiki)|50211/TCP (HTTP)|[Julius](http://julius.osdn.jp/)|[speech2s_demo.sb2](https://github.com/memakura/speech2s/raw/master/00scratch/speech2s_demo.sb2)|
+|顔検出(作成中)|[s2face](https://github.com/memakura/s2face)<br>[[解説(作成中)]]()|50212/TCP (HTTP)|[Open CV](https://docs.opencv.org/3.4.1/d7/d8b/tutorial_py_face_detection.html)|[s2face.sb2](https://github.com/memakura/speech2s/raw/master/00scratch/s2face.sb2)|
 |Arduino との Firmata 通信|[s2aio](https://github.com/memakura/s2aio)<br>[[解説]](https://github.com/memakura/s2aio/wiki)|50209/TCP (HTTP)|[MrYsLab作 PyMata FirmataPlus](https://github.com/MrYsLab)|[s2aio_demo.sb2](https://github.com/memakura/s2aio/raw/msi_installer/00scratch/s2aio_demo.sb2)|
+|micro:bitとBluetooth接続|[s2microbit-ble](https://memakura.github.io/s2microbit-ble/)<br>[[解説]](https://github.com/memakura/s2microbit-ble/wiki)|50209/TCP (HTTP)|[node-bbc-microbit](https://github.com/sandeepmistry/node-bbc-microbit)|[デモ](https://memakura.github.io/s2microbit-ble/00scratch/)/[ビデオ](https://memakura.github.io/s2microbit-ble/#DemoProject_JA)|
+
 
 ヘルパーによってはさらに別のモジュールと通信します．
 
 - speech2s は Julius と 10500/TCP で通信
 - s2aio は Arduino と COMポート/Firmataプロトコルで通信
+- s2microbit-ble は BBC micro:bit と Bluetooth 4.0以上 (Bluetooth low energy)で接続
 
 想定するシステムの全体像は以下のような図になります．
 ![systemdesign-120.png](systemdesign-120.png)
@@ -47,6 +52,7 @@
 - Scratch の繰り返しループで大量にリクエストが飛んでくるかもしれません．サーバの軽量化を図るために非同期 I/O ライブラリを用います．すると，各ヘルパーはシングルスレッドでありながら，複数のHTTPリクエストを非同期並列処理できるようになります．
 - 実際，MrYsLab の s2aio は Python の [asyncio](https://docs.python.jp/3/library/asyncio.html) をベースにした [aiohttp](http://aiohttp.readthedocs.io/en/stable/) を用いています．
 - Python によるヘルパーの作成方法を[こちらの記事](https://qiita.com/memakura/items/fb48d7f6fb6b4b88b5bb)にまとめます．
+- ただし s2microbit-ble は Javascript (Node.js + Electron + Expressサーバ)です．構成や実装方法は[こちらの記事](https://qiita.com/memakura/items/1acab55a37651e9081b4)にまとめます．
 
 ## 開発言語およびバージョンの選択
 
@@ -54,6 +60,7 @@
 - s2aio の開発で Python が使われていることや，インストーラの作成が簡単なことから Python を開発言語とします．
 - asyncio の async/await は3.5以上，OpenCV が安定に動くのは3.5以下であるため，Python 3.5 を利用します．
 - インストーラ (msi) の生成には [scratio](https://lets.makewitharduino.com/sample/scratch/) に倣い [cx_Freeze](https://anthony-tuininga.github.io/cx_Freeze/) を利用します．
+- ただしs2microbit-ble は Electron のため，electron-builder を利用します．ビルド方法は[こちらの記事](https://qiita.com/memakura/items/dc5cf2ff39d24ceb53ff)にまとめます．
 
 ## ブロック記載の漢字
 
