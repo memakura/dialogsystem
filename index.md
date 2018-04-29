@@ -12,7 +12,7 @@
     - ユーザはPython などの開発環境をインストールせずに済むよう，実行形式で配布します．
     - 音声合成，音声認識，Arduino制御といった機能ごとにヘルパーアプリケーション（以下，ヘルパー）を用意し，必要なヘルパーだけインストールできるようにします．
 
-    [<img src="https://github.com/memakura/s2speech/raw/master/images/ScratchSpeechSynth.png" width="128">](https://github.com/memakura/s2speech/wiki) [<img src="https://github.com/memakura/speech2s/raw/master/images/ScratchSpeechRecog.png" width="128">](https://github.com/memakura/speech2s/wiki) [<img src="https://github.com/memakura/s2aio/raw/msi_installer/icons/ScratchArduino.png" width="128">](https://github.com/memakura/s2aio/wiki) [<img src="https://github.com/memakura/s2microbit-ble/raw/master/images/s2microbit-ble.png" width="128">](https://memakura.github.io/s2microbit-ble/)
+    [<img src="https://github.com/memakura/s2speech/raw/master/images/ScratchSpeechSynth.png" width="128">](https://github.com/memakura/s2speech/wiki) [<img src="https://github.com/memakura/speech2s/raw/master/images/ScratchSpeechRecog.png" width="128">](https://github.com/memakura/speech2s/wiki) [<img src="https://github.com/memakura/s2face/raw/master/images/ScratchFace.png" width="128">](https://github.com/memakura/s2face) [<img src="https://github.com/memakura/s2aio/raw/msi_installer/icons/ScratchArduino.png" width="128">](https://github.com/memakura/s2aio/wiki) [<img src="https://github.com/memakura/s2microbit-ble/raw/master/images/s2microbit-ble.png" width="128">](https://memakura.github.io/s2microbit-ble/)
 
     （クリックするとそれぞれの解説ページへ）
 
@@ -30,7 +30,7 @@
 |---|---|---|---|---|
 |音声合成|[s2speech](https://github.com/memakura/s2speech)<br>[[解説]](https://github.com/memakura/s2speech/wiki)|50210/TCP (HTTP)|[OpenJTalk](http://open-jtalk.sp.nitech.ac.jp/) | [s2speech_demo.sb2](https://github.com/memakura/s2speech/raw/master/00scratch/s2speech_demo.sb2) |
 |音声認識|[speech2s](https://github.com/memakura/speech2s)<br>[[解説]](https://github.com/memakura/speech2s/wiki)|50211/TCP (HTTP)|[Julius](http://julius.osdn.jp/)|[speech2s_demo.sb2](https://github.com/memakura/speech2s/raw/master/00scratch/speech2s_demo.sb2)|
-|顔検出(作成中)|[s2face](https://github.com/memakura/s2face)<br>[[解説(作成中)]]()|50212/TCP (HTTP)|[Open CV](https://docs.opencv.org/3.4.1/d7/d8b/tutorial_py_face_detection.html)|[s2face.sb2](https://github.com/memakura/speech2s/raw/master/00scratch/s2face.sb2)|
+|顔検出|[s2face](https://github.com/memakura/s2face)<br>[[解説(作成中)]]()|50212/TCP (HTTP)|[Open CV](https://docs.opencv.org/3.4.1/d7/d8b/tutorial_py_face_detection.html)|[s2face.sb2](https://github.com/memakura/speech2s/raw/master/00scratch/s2face.sb2)|
 |Arduino との Firmata 通信|[s2aio](https://github.com/memakura/s2aio)<br>[[解説]](https://github.com/memakura/s2aio/wiki)|50209/TCP (HTTP)|[MrYsLab作 PyMata FirmataPlus](https://github.com/MrYsLab)|[s2aio_demo.sb2](https://github.com/memakura/s2aio/raw/msi_installer/00scratch/s2aio_demo.sb2)|
 |micro:bitとBluetooth接続|[s2microbit-ble](https://memakura.github.io/s2microbit-ble/)<br>[[解説]](https://github.com/memakura/s2microbit-ble/wiki)|50209/TCP (HTTP)|[node-bbc-microbit](https://github.com/sandeepmistry/node-bbc-microbit)|[デモ](https://memakura.github.io/s2microbit-ble/00scratch/)/[ビデオ](https://memakura.github.io/s2microbit-ble/#DemoProject_JA)|
 
