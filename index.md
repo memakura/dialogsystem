@@ -75,7 +75,7 @@
 
 ### **s2speak (OpenJTalk)**
 
-[<img src="https://github.com/memakura/s2speak/raw/master/images/ScratchSpeechSynth.png" width="196" align="top">](https://github.com/memakura/s2speak/wiki) <img src="https://github.com/memakura/s2speak/raw/master/images/block_and_sample_JA.png" align="top">
+[<img src="https://github.com/memakura/s2speak/raw/master/images/ScratchSpeechSynth.png" width="196" align="top">](https://github.com/memakura/s2speak/wiki) <img width="480" src="https://github.com/memakura/s2speak/raw/master/images/block_and_sample_JA.png" align="top">
 
 #### 機能
 
@@ -100,7 +100,7 @@
 
 ### **s2listen (Julius)**
 
-[<img src="https://github.com/memakura/s2listen/raw/master/images/ScratchSpeechRecog.png" width="196" align="top">](https://github.com/memakura/s2listen/wiki) <img src="https://github.com/memakura/s2listen/raw/master/images/block_and_sample_JA.png" align="top">
+[<img src="https://github.com/memakura/s2listen/raw/master/images/ScratchSpeechRecog.png" width="196" align="top">](https://github.com/memakura/s2listen/wiki) <img width="480" src="https://github.com/memakura/s2listen/raw/master/images/block_and_sample_JA.png" align="top">
 
 #### 機能
 
