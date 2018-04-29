@@ -12,9 +12,9 @@
     - ユーザはPython などの開発環境をインストールせずに済むよう，実行形式で配布します．
     - 音声合成，音声認識，Arduino制御といった機能ごとにヘルパーアプリケーション（以下，ヘルパー）を用意し，必要なヘルパーだけインストールできるようにします．
 
-    [<img src="https://github.com/memakura/s2speech/raw/master/images/ScratchSpeechSynth.png" width="128">](https://github.com/memakura/s2speech/wiki) [<img src="https://github.com/memakura/speech2s/raw/master/images/ScratchSpeechRecog.png" width="128">](https://github.com/memakura/speech2s/wiki) [<img src="https://github.com/memakura/s2face/raw/master/images/ScratchFace.png" width="128">](https://github.com/memakura/s2face) [<img src="https://github.com/memakura/s2aio/raw/msi_installer/icons/ScratchArduino.png" width="128">](https://github.com/memakura/s2aio/wiki) [<img src="https://github.com/memakura/s2microbit-ble/raw/master/images/s2microbit-ble.png" width="128">](https://memakura.github.io/s2microbit-ble/)
+[<img src="https://github.com/memakura/s2speak/raw/master/images/ScratchSpeechSynth.png" width="128">](https://github.com/memakura/s2speak/wiki) [<img src="https://github.com/memakura/s2listen/raw/master/images/ScratchSpeechRecog.png" width="128">](https://github.com/memakura/s2listen/wiki) [<img src="https://github.com/memakura/s2face/raw/master/images/ScratchFace.png" width="128">](https://github.com/memakura/s2face) [<img src="https://github.com/memakura/s2aio/raw/msi_installer/icons/ScratchArduino.png" width="128">](https://github.com/memakura/s2aio/wiki) [<img src="https://github.com/memakura/s2microbit-ble/raw/master/images/s2microbit-ble.png" width="128">](https://memakura.github.io/s2microbit-ble/)
 
-    （クリックするとそれぞれの解説ページへ）
+（クリックするとそれぞれの解説ページへ）
 
 # 設計
 
@@ -28,21 +28,21 @@
 
 |機能|ヘルパー名 (github へのリンク) と解説|ポート番号|ベースとなるエンジン/API|Scratch デモプロジェクト|
 |---|---|---|---|---|
-|音声合成|[s2speech](https://github.com/memakura/s2speech)<br>[[解説]](https://github.com/memakura/s2speech/wiki)|50210/TCP (HTTP)|[OpenJTalk](http://open-jtalk.sp.nitech.ac.jp/) | [s2speech_demo.sb2](https://github.com/memakura/s2speech/raw/master/00scratch/s2speech_demo.sb2) |
-|音声認識|[speech2s](https://github.com/memakura/speech2s)<br>[[解説]](https://github.com/memakura/speech2s/wiki)|50211/TCP (HTTP)|[Julius](http://julius.osdn.jp/)|[speech2s_demo.sb2](https://github.com/memakura/speech2s/raw/master/00scratch/speech2s_demo.sb2)|
-|顔検出|[s2face](https://github.com/memakura/s2face)<br>[[解説(作成中)]]()|50212/TCP (HTTP)|[Open CV](https://docs.opencv.org/3.4.1/d7/d8b/tutorial_py_face_detection.html)|[s2face.sb2](https://github.com/memakura/speech2s/raw/master/00scratch/s2face.sb2)|
+|音声合成|[s2speak](https://github.com/memakura/s2speak)<br>[[解説]](https://github.com/memakura/s2speak/wiki)|50210/TCP (HTTP)|[OpenJTalk](http://open-jtalk.sp.nitech.ac.jp/) | [s2speak_demo.sb2](https://github.com/memakura/s2speak/raw/master/00scratch/s2speak_demo.sb2) |
+|音声認識|[s2listen](https://github.com/memakura/s2listen)<br>[[解説]](https://github.com/memakura/s2listen/wiki)|50211/TCP (HTTP)|[Julius](http://julius.osdn.jp/)|[s2listen_demo.sb2](https://github.com/memakura/s2listen/raw/master/00scratch/s2listen_demo.sb2)|
+|顔検出|[s2face](https://github.com/memakura/s2face)<br>[[解説(作成中)]]()|50212/TCP (HTTP)|[Open CV](https://docs.opencv.org/3.4.1/d7/d8b/tutorial_py_face_detection.html)|[s2face.sb2](https://github.com/memakura/s2listen/raw/master/00scratch/s2face.sb2)|
 |Arduino との Firmata 通信|[s2aio](https://github.com/memakura/s2aio)<br>[[解説]](https://github.com/memakura/s2aio/wiki)|50209/TCP (HTTP)|[MrYsLab作 PyMata FirmataPlus](https://github.com/MrYsLab)|[s2aio_demo.sb2](https://github.com/memakura/s2aio/raw/msi_installer/00scratch/s2aio_demo.sb2)|
 |micro:bitとBluetooth接続|[s2microbit-ble](https://memakura.github.io/s2microbit-ble/)<br>[[解説]](https://github.com/memakura/s2microbit-ble/wiki)|50209/TCP (HTTP)|[node-bbc-microbit](https://github.com/sandeepmistry/node-bbc-microbit)|[デモ](https://memakura.github.io/s2microbit-ble/00scratch/)/[ビデオ](https://memakura.github.io/s2microbit-ble/#DemoProject_JA)|
 
 
 ヘルパーによってはさらに別のモジュールと通信します．
 
-- speech2s は Julius と 10500/TCP で通信
+- s2listen は Julius と 10500/TCP で通信
 - s2aio は Arduino と COMポート/Firmataプロトコルで通信
 - s2microbit-ble は BBC micro:bit と Bluetooth 4.0以上 (Bluetooth low energy)で接続
 
 想定するシステムの全体像は以下のような図になります．
-![systemdesign-120.png](systemdesign-120.png)
+<img width="600" alt="Scratch2 Blocks for Dialog Systems and Robots" src="systemdesign-200.png">
 
 
 
@@ -56,11 +56,13 @@
 
 ## 開発言語およびバージョンの選択
 
-- asyncio を利用し，かつ後々に OpenCV を組み込むことを考えると，Python や C# がよい候補となります．
-- s2aio の開発で Python が使われていることや，インストーラの作成が簡単なことから Python を開発言語とします．
-- asyncio の async/await は3.5以上，OpenCV が安定に動くのは3.5以下であるため，Python 3.5 を利用します．
-- インストーラ (msi) の生成には [scratio](https://lets.makewitharduino.com/sample/scratch/) に倣い [cx_Freeze](https://anthony-tuininga.github.io/cx_Freeze/) を利用します．
-- ただしs2microbit-ble は Electron のため，electron-builder を利用します．ビルド方法は[こちらの記事](https://qiita.com/memakura/items/dc5cf2ff39d24ceb53ff)にまとめます．
+- Python + asyncio + cx_Freeze
+    - asyncio を利用し，かつ後々に OpenCV を組み込むことを考えると，Python や C# がよい候補となります．
+    - s2aio の開発で Python が使われていることや，インストーラの作成が簡単なことから Python を開発言語とします．
+    - asyncio の async/await は3.5以上，OpenCV が安定に動くのは3.5以下であるため，Python 3.5 を利用します．
+    - インストーラ (msi) の生成には [scratio](https://lets.makewitharduino.com/sample/scratch/) に倣い [cx_Freeze](https://anthony-tuininga.github.io/cx_Freeze/) を利用します．
+- NodeJS (Javascript) + Electron + electron-builder
+    - 2microbit-ble は noble というモジュールを利用するため NodeJS ベースになります．ビルド方法は[こちらの記事](https://qiita.com/memakura/items/dc5cf2ff39d24ceb53ff)にまとめます．
 
 ## ブロック記載の漢字
 
@@ -71,9 +73,9 @@
 
 ## 各ヘルパー (helper app) の説明
 
-### **s2speech (OpenJTalk)**
+### **s2speak (OpenJTalk)**
 
-[<img src="https://github.com/memakura/s2speech/raw/master/images/ScratchSpeechSynth.png" width="196" align="top">](https://github.com/memakura/s2speech/wiki) <img src="https://github.com/memakura/s2speech/raw/master/images/block_and_sample_JA.png" align="top">
+[<img src="https://github.com/memakura/s2speak/raw/master/images/ScratchSpeechSynth.png" width="196" align="top">](https://github.com/memakura/s2speak/wiki) <img src="https://github.com/memakura/s2speak/raw/master/images/block_and_sample_JA.png" align="top">
 
 #### 機能
 
@@ -82,23 +84,23 @@
 
 #### 使用方法へのリンク
 
-- 解説: [https://github.com/memakura/s2speech/wiki](https://github.com/memakura/s2speech/wiki)
-- 開発ページ: [https://github.com/memakura/s2speech](https://github.com/memakura/s2speech)
+- 解説: [https://github.com/memakura/s2speak/wiki](https://github.com/memakura/s2speak/wiki)
+- 開発ページ: [https://github.com/memakura/s2speak](https://github.com/memakura/s2speak)
 
 #### ブロックの設計
 
 - 再生を待たずに次へ進む `[...]と話す` と，再生を待つ `[...]と話す(終わるまで待つ)` の二種類のブロックを用意します．
     - 前者の**待たない**ブロックを使うことで，話しながら口パクすることができます．
-- 使い方の詳細な例は[デモプロジェクト(s2speech_demo.sb2)](https://github.com/memakura/s2speech/raw/master/00scratch/s2speech_demo.sb2)にまとめます．
+- 使い方の詳細な例は[デモプロジェクト(s2speak_demo.sb2)](https://github.com/memakura/s2speak/raw/master/00scratch/s2speak_demo.sb2)にまとめます．
 
 #### 拡張性
 
 - 声は数種類のみとし，あとは hts 形式で自由に追加できるようにします．
 - 追加の hts ファイルはユーザにアクセス権限のあるユーザ領域に置けるようにします．
 
-### **speech2s (Julius)**
+### **s2listen (Julius)**
 
-[<img src="https://github.com/memakura/speech2s/raw/master/images/ScratchSpeechRecog.png" width="196" align="top">](https://github.com/memakura/speech2s/wiki) <img src="https://github.com/memakura/speech2s/raw/master/images/block_and_sample_JA.png" align="top">
+[<img src="https://github.com/memakura/s2listen/raw/master/images/ScratchSpeechRecog.png" width="196" align="top">](https://github.com/memakura/s2listen/wiki) <img src="https://github.com/memakura/s2listen/raw/master/images/block_and_sample_JA.png" align="top">
 
 #### 機能
 
@@ -107,10 +109,10 @@
 
 #### 使用方法へのリンク
 
-- 解説: [https://github.com/memakura/speech2s/wiki](https://github.com/memakura/speech2s/wiki)
+- 解説: [https://github.com/memakura/s2listen/wiki](https://github.com/memakura/s2listen/wiki)
 - 音声認識ではマイクの設定が重要になるため，Bluetooth ヘッドセットの使用方法などと合わせてまとめます．
-    - [音声入力デバイス（マイク）の設定](https://github.com/memakura/speech2s/wiki/SetInputDevice)
-- 開発ページ: [https://github.com/memakura/speech2s](https://github.com/memakura/speech2s)
+    - [音声入力デバイス（マイク）の設定](https://github.com/memakura/s2listen/wiki/SetInputDevice)
+- 開発ページ: [https://github.com/memakura/s2listen](https://github.com/memakura/s2listen)
 
 #### ブロックの設計
 
@@ -121,7 +123,7 @@
     - Scratch2では連想配列がないため，各品詞をループ等で順に調べるために `品詞#`（品詞番号）を使います．
     - 各`品詞#` がどの品詞に対応するかを返すブロックとして `品詞#(...)の名前` を用意します．
     - さらに，品詞番号でループを回すときのために，品詞番号の最大を `品詞の数` で取れるようにします．
-- 使い方の詳細な例は[デモプロジェクト(speech2s_demo.sb2)](https://github.com/memakura/speech2s/raw/master/00scratch/speech2s_demo.sb2)にまとめます．
+- 使い方の詳細な例は[デモプロジェクト(s2listen_demo.sb2)](https://github.com/memakura/s2listen/raw/master/00scratch/s2listen_demo.sb2)にまとめます．
 
 #### 拡張性
 
