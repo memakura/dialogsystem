@@ -59,7 +59,7 @@ ArduinoをScratchから使うための[s2aio(MrYsLab)](https://github.com/MrYsLa
 [<img src="https://github.com/memakura/s2face/raw/master/images/ScratchFace.png" width="128" align="top">](https://github.com/memakura/s2face/wiki) [<img width="480" src="https://github.com/memakura/s2face/raw/master/images/block_and_sample_JA.png" align="top">](https://github.com/memakura/s2face/raw/master/images/block_and_sample_JA.png)
 
 顔の位置と大きさを検出します．
-- 解説ページは準備中です．インストール方法はs2speakなどを参考にしてください．
+- [インストール方法と使用方法（アイコンからでも移動できます）](https://github.com/memakura/s2face/wiki)
 - 必要なディスクスペースが大きい(560-570MB)ので注意してください．
 - [デモプロジェクト(s2face_demo.sb2)](https://github.com/memakura/s2listen/raw/master/00scratch/s2face_demo.sb2)
 
