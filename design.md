@@ -2,7 +2,7 @@
 
 # Scratch 2.0 オフラインで使える音声対話ロボット／音声対話システム用ブロック
 
-気軽に対話システムや対話ロボットのプロトタイプを作成するには，音声合成，音声認識，および電子回路（目が光る，頭が動く）を Scratch で使えるとよさそうです．それに，常にインターネットに接続できる環境にいるとは限らないので，すべてオフラインで行えるようにしたいところ．ここではそんな Scratch ブロックを実現するための設計方針をまとめます．
+気軽に対話システムや対話ロボット，スマートスピーカーのプロトタイプを作成するには，音声合成，音声認識，および電子回路（目が光る，頭が動く）を Scratch で使えるとよさそうです．それに，常にインターネットに接続できる環境にいるとは限らないので，すべてオフラインで行えるようにしたいところ．ここではそんな Scratch ブロックを実現するための設計方針をまとめます．
 
 - [Scratch 2 (Offline)](https://scratch.mit.edu/download)
     - ディスプレイに表情や目の動きを作るといった細かい制御は Scratch 側で書くことになるでしょうから，関数やクローンなど，慣れた機能を利用できる Scratch 2 にします．
@@ -32,7 +32,7 @@
 |---|---|---|---|---|
 |音声合成|[s2speak](https://github.com/memakura/s2speak)<br>[[解説]](https://github.com/memakura/s2speak/wiki)|50210/TCP (HTTP)|[OpenJTalk](http://open-jtalk.sp.nitech.ac.jp/) | [s2speak_demo.sb2](https://github.com/memakura/s2speak/raw/master/00scratch/s2speak_demo.sb2) |
 |音声認識|[s2listen](https://github.com/memakura/s2listen)<br>[[解説]](https://github.com/memakura/s2listen/wiki)|50211/TCP (HTTP)|[Julius](http://julius.osdn.jp/)|[s2listen_demo.sb2](https://github.com/memakura/s2listen/raw/master/00scratch/s2listen_demo.sb2)|
-|顔検出|[s2face](https://github.com/memakura/s2face)<br>[[解説(作成中)]]()|50212/TCP (HTTP)|[OpenCV](https://docs.opencv.org/3.4.1/d7/d8b/tutorial_py_face_detection.html)|[s2face_demo.sb2](https://github.com/memakura/s2listen/raw/master/00scratch/s2face_demo.sb2)|
+|顔検出|[s2face](https://github.com/memakura/s2face)<br>[[解説]](https://github.com/memakura/s2face/wiki)|50212/TCP (HTTP)|[OpenCV](https://docs.opencv.org/3.4.1/d7/d8b/tutorial_py_face_detection.html)|[s2face_demo.sb2](https://github.com/memakura/s2listen/raw/master/00scratch/s2face_demo.sb2)|
 |Arduino との Firmata 通信|[s2aio](https://github.com/memakura/s2aio)<br>[[解説]](https://github.com/memakura/s2aio/wiki)|50209/TCP (HTTP)|[MrYsLab作 PyMata FirmataPlus](https://github.com/MrYsLab)|[s2aio_demo.sb2](https://github.com/memakura/s2aio/raw/msi_installer/00scratch/s2aio_demo.sb2)|
 |micro:bitとBluetooth接続|[s2microbit-ble](https://memakura.github.io/s2microbit-ble/)<br>[[解説]](https://github.com/memakura/s2microbit-ble/wiki)|50209/TCP (HTTP)|[node-bbc-microbit](https://github.com/sandeepmistry/node-bbc-microbit)|[デモ](https://memakura.github.io/s2microbit-ble/00scratch/)/[ビデオ](https://memakura.github.io/s2microbit-ble/#DemoProject_JA)|
 
