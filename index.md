@@ -4,13 +4,13 @@
 
 気軽に対話システムや対話ロボット，スマートスピーカーを作成するには，音声合成，音声認識，および電子回路（目が光る，頭が動く）を Scratch で使えるとよさそうです．それに，常にインターネットに接続できる環境にいるとは限らないので，すべてオフラインで行えるようにしたいところ．それを可能にするための Scratch ブロックを紹介します．
 
-[<img alt="音声合成 s2speak" src="https://github.com/memakura/s2speak/raw/master/images/ScratchSpeechSynth.png" width="10%">](https://github.com/memakura/s2speak/wiki) [<img alt="音声認識 s2listen" src="https://github.com/memakura/s2listen/raw/master/images/ScratchSpeechRecog.png" width="10%">](https://github.com/memakura/s2listen/wiki) [<img alt="顔検出 s2face" src="https://github.com/memakura/s2face/raw/master/images/ScratchFace.png" width="10%">](https://github.com/memakura/s2face) [<img alt="Arduino s2aio" src="https://github.com/memakura/s2aio/raw/msi_installer/icons/ScratchArduino.png" width="10%">](https://github.com/memakura/s2aio/wiki) [<img alt="micro:bit s2microbit-ble" src="https://github.com/memakura/s2microbit-ble/raw/master/images/s2microbit-ble.png" width="10%">](https://memakura.github.io/s2microbit-ble/) 
+[<img alt="音声合成 s2speak" src="https://github.com/memakura/s2speak/raw/master/images/ScratchSpeechSynth.png" width="15%">](https://github.com/memakura/s2speak/wiki) [<img alt="音声認識 s2listen" src="https://github.com/memakura/s2listen/raw/master/images/ScratchSpeechRecog.png" width="15%">](https://github.com/memakura/s2listen/wiki) [<img alt="顔検出 s2face" src="https://github.com/memakura/s2face/raw/master/images/ScratchFace.png" width="15%">](https://github.com/memakura/s2face) [<img alt="Arduino s2aio" src="https://github.com/memakura/s2aio/raw/msi_installer/icons/ScratchArduino.png" width="15%">](https://github.com/memakura/s2aio/wiki) [<img alt="micro:bit s2microbit-ble" src="https://github.com/memakura/s2microbit-ble/raw/master/images/s2microbit-ble.png" width="15%">](https://memakura.github.io/s2microbit-ble/) 
 
 （クリックするとそれぞれの解説ページへ）
 
 必要な機能に応じて，必要な拡張ブロックを選んで追加します．それぞれインストーラを準備しています．対話ロボットや対話システムの[全体設計についてはこちらのページ](design.md)で詳しく説明します．
 
-micro:bitの拡張ブロック s2microbit-ble は Windows10 や Mac OS X でも使えますが，他は今のところ Windowsのみです．（ただしそこまでOS依存性は強くないので，必要に応じてMac/Linux版などを用意する予定です．）
+micro:bitの拡張ブロック s2microbit-ble は Windows10 や Mac OS X でも使えますが，他は今のところ Windowsのみです．
 
 
 ## 用意するもの
@@ -52,7 +52,7 @@ micro:bitの拡張ブロック s2microbit-ble は Windows10 や Mac OS X でも�
 
 顔の位置と大きさを検出します．
 - [インストール方法と使用方法（アイコンからでも移動できます）](https://github.com/memakura/s2face/wiki)
-- 必要なディスクスペースが大きい(560-570MB)ので注意してください．
+- OpenCVという画像処理ライブラリを使っています．必要なディスクスペースが大きい(560-570MB)ので注意してください．
 - [デモプロジェクト(s2face_demo.sb2)](https://github.com/memakura/s2listen/raw/master/00scratch/s2face_demo.sb2)
 
 ### **s2aio (Arduino)**
@@ -69,8 +69,7 @@ ArduinoをScratchから使うための[s2aio(MrYsLab)](https://github.com/MrYsLa
 [<img src="https://memakura.github.io/s2microbit-ble/images/s2microbit-ble.png" width="128" align="top">](https://memakura.github.io/s2microbit-ble/) [<img width="480" src="https://memakura.github.io/s2microbit-ble/images/blocks_v2.png" align="top">](https://memakura.github.io/s2microbit-ble/images/blocks_v2.png)
 
 BBC micro:bit を Bluetooth (Low Energy) で使うことができます．（Windows10とMac OS Xに対応しています．）
-
 電子回路だけでなくゲームコントローラなどいろいろなものを作成することができます．
 - [インストール方法と使用方法（アイコンからでも移動できます）](https://memakura.github.io/s2microbit-ble/)
-- [ブロックの使い方の詳細はこちら](https://github.com/memakura/s2microbit-ble/wiki/)です．
+- [ブロックの使い方のくわしい説明](https://github.com/memakura/s2microbit-ble/wiki/)
 - [デモプロジェクト(fly.sb2など)](https://memakura.github.io/s2microbit-ble/00scratch/)
