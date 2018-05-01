@@ -14,26 +14,28 @@
 ## 用意するもの
 
 - [Scratch 2 (Offline)](https://scratch.mit.edu/download)
-- マイク（音声認識をする場合．PC内臓のもので可）
-- カメラ（顔追跡をする場合．PC内臓のもので可）
+- 必要に応じて
+    - マイク（音声認識をする場合．PC内臓のもので可）
+    - カメラ（顔追跡をする場合．PC内臓のもので可）
+    - Arduino や BBC micro:bit
 
 ## 各拡張ブロックの説明
 
 ### **s2speak (OpenJTalk)**
 
-[<img src="https://github.com/memakura/s2speak/raw/master/images/ScratchSpeechSynth.png" width="128" align="top">](https://github.com/memakura/s2speak/wiki) <img width="480" src="https://github.com/memakura/s2speak/raw/master/images/block_and_sample_JA.png" align="top">
+[<img src="https://github.com/memakura/s2speak/raw/master/images/ScratchSpeechSynth.png" width="128" align="top">](https://github.com/memakura/s2speak/wiki) [<img width="480" src="https://github.com/memakura/s2speak/raw/master/images/block_and_sample_JA.png" align="top">](https://github.com/memakura/s2speak/raw/master/images/block_and_sample_JA.png)
 
 テキストを入力すると音声を合成します．
-- [こちら（もしくはアイコン）をクリック](https://github.com/memakura/s2speak/wiki)するとインストールや使用方法のページに移ります．
+- [インストール方法と使用方法（アイコンからでも移動できます）](https://github.com/memakura/s2speak/wiki)
 - OpejJtalkという音声合成を使っています．
 - [デモプロジェクト(s2speak_demo.sb2)](https://github.com/memakura/s2speak/raw/master/00scratch/s2speak_demo.sb2)
 
 ### **s2listen (Julius)**
 
-[<img src="https://github.com/memakura/s2listen/raw/master/images/ScratchSpeechRecog.png" width="128" align="top">](https://github.com/memakura/s2listen/wiki) <img width="480" src="https://github.com/memakura/s2listen/raw/master/images/block_and_sample_JA.png" align="top">
+[<img src="https://github.com/memakura/s2listen/raw/master/images/ScratchSpeechRecog.png" width="128" align="top">](https://github.com/memakura/s2listen/wiki) [<img width="480" src="https://github.com/memakura/s2listen/raw/master/images/block_and_sample_JA.png" align="top">](https://github.com/memakura/s2listen/raw/master/images/block_and_sample_JA.png)
 
 音声をテキストに変換します．
-- [こちら（もしくはアイコン）をクリック](https://github.com/memakura/s2listen/wiki)するとインストールや使用方法のページに移ります．
+- [インストール方法と使用方法（アイコンからでも移動できます）](https://github.com/memakura/s2listen/wiki)
 - Juliusという音声認識を使っています．
 - 音声認識ではマイクの設定が重要になるため，[音声入力デバイス（マイク）の設定](https://github.com/memakura/s2listen/wiki/SetInputDevice) も参考にしてください．
 - 簡単なブロックの説明
@@ -44,17 +46,17 @@
 
 ### **s2aio (Arduino)**
 
-[<img src="https://github.com/memakura/s2aio/raw/msi_installer/icons/ScratchArduino.png" width="128" algin="top">](https://github.com/memakura/s2aio/wiki) <img src="https://github.com/memakura/s2aio/wiki/block_and_sample_JA.png" align="top">
+[<img src="https://github.com/memakura/s2aio/raw/msi_installer/icons/ScratchArduino.png" width="128" algin="top">](https://github.com/memakura/s2aio/wiki) [<img src="https://github.com/memakura/s2aio/wiki/block_and_sample_JA.png" align="top">](https://github.com/memakura/s2aio/wiki/block_and_sample_JA.png)
 
 ArduinoをScratchから使うための[s2aio(MrYsLab)](https://github.com/MrYsLab/s2aio)をインストーラ版にしました．
 - ブロックの日本語化も行っています．
-- [こちら（もしくはアイコン）をクリック](https://github.com/memakura/s2aio/wiki)するとインストールや使用方法のページに移ります．
+- [インストール方法と使用方法（アイコンからでも移動できます）](https://github.com/memakura/s2aio/wiki)
 - [デモプロジェクト(s2aio_demo.sb2)](https://github.com/memakura/s2aio/raw/msi_installer/00scratch/s2aio_demo.sb2)
 
 
 ### **s2face (OpenCV)**
 
-[<img src="https://github.com/memakura/s2face/raw/master/images/ScratchFace.png" width="128" align="top">](https://github.com/memakura/s2face/wiki) <img width="480" src="https://github.com/memakura/s2face/raw/master/images/block_and_sample_JA.png" align="top">
+[<img src="https://github.com/memakura/s2face/raw/master/images/ScratchFace.png" width="128" align="top">](https://github.com/memakura/s2face/wiki) [<img width="480" src="https://github.com/memakura/s2face/raw/master/images/block_and_sample_JA.png" align="top">](https://github.com/memakura/s2face/raw/master/images/block_and_sample_JA.png)
 
 顔の位置と大きさを検出します．
 - 解説ページは準備中です．インストール方法はs2speakなどを参考にしてください．
@@ -63,9 +65,11 @@ ArduinoをScratchから使うための[s2aio(MrYsLab)](https://github.com/MrYsLa
 
 ### **s2microbit-ble**
 
-[<img src="https://memakura.github.io/s2microbit-ble/images/s2microbit-ble.png" width="128" align="top">](https://memakura.github.io/s2microbit-ble/) <img width="480" src="https://memakura.github.io/s2microbit-ble/images/blocks_v2.png" align="top">
+[<img src="https://memakura.github.io/s2microbit-ble/images/s2microbit-ble.png" width="128" align="top">](https://memakura.github.io/s2microbit-ble/) [<img width="480" src="https://memakura.github.io/s2microbit-ble/images/blocks_v2.png" align="top">](https://memakura.github.io/s2microbit-ble/images/blocks_v2.png)
 
-BBC micro:bit を Bluetooth (Low Energy) で使うことができます．Windows10とMac OS Xに対応しています．
-- [こちら（もしくはアイコン）をクリック](https://memakura.github.io/s2microbit-ble/)するとインストールや使用方法のページに移ります．
+BBC micro:bit を Bluetooth (Low Energy) で使うことができます．（Windows10とMac OS Xに対応しています．）
+
+電子回路だけでなくゲームコントローラなどいろいろなものを作成することができます．
+- [インストール方法と使用方法（アイコンからでも移動できます）](https://memakura.github.io/s2microbit-ble/)
 - [ブロックの使い方の詳細はこちら](https://github.com/memakura/s2microbit-ble/wiki/)です．
 - [デモプロジェクト(fly.sb2など)](https://memakura.github.io/s2microbit-ble/00scratch/)
