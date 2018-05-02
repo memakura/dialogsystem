@@ -2,9 +2,9 @@
 
 # Scratch 2 オフラインで使える音声対話ロボット／音声対話システム用ブロック
 
-気軽に対話システムや対話ロボット、スマートスピーカーを作成するには、音声合成、音声認識、および電子回路を Scratch で使えると面白そうです。たとえば前に人が座ると目が光ってしゃべりかけてくるとか。そんないろいろな発想を実現する Scratch ブロックを紹介します。常にインターネットに接続できる環境にいるとは限らないので、すべてオフラインで行えるようになっています。
+気軽に対話システムや対話ロボット、スマートスピーカーを作成するには、音声合成・認識、画像認識、センサやLED・モーターなどを Scratch で使えると面白そうです。たとえば人が座ると目が光ってしゃべりかけてくるとか。そんないろいろな発想を実現する Scratch ブロックを紹介します。常にインターネットに接続できる環境にいるとは限らないので、すべてオフラインで動作するようになっています。
 
-[<img alt="音声合成 s2speak" src="https://github.com/memakura/s2speak/raw/master/images/ScratchSpeechSynth.png" width="15%">](https://github.com/memakura/s2speak/wiki) [<img alt="音声認識 s2listen" src="https://github.com/memakura/s2listen/raw/master/images/ScratchSpeechRecog.png" width="15%">](https://github.com/memakura/s2listen/wiki) [<img alt="顔検出 s2face" src="https://github.com/memakura/s2face/raw/master/images/ScratchFace.png" width="15%">](https://github.com/memakura/s2face) [<img alt="Arduino s2aio" src="https://github.com/memakura/s2aio/raw/msi_installer/icons/ScratchArduino.png" width="15%">](https://github.com/memakura/s2aio/wiki) [<img alt="micro:bit s2microbit-ble" src="https://github.com/memakura/s2microbit-ble/raw/master/images/s2microbit-ble.png" width="15%">](https://memakura.github.io/s2microbit-ble/) 
+[<img alt="音声合成 s2speak" src="https://github.com/memakura/s2speak/raw/master/images/ScratchSpeechSynth.png" width="15%">](https://github.com/memakura/s2speak/wiki) [<img alt="音声認識 s2listen" src="https://github.com/memakura/s2listen/raw/master/images/ScratchSpeechRecog.png" width="15%">](https://github.com/memakura/s2listen/wiki) [<img alt="顔検出 s2face" src="https://github.com/memakura/s2face/raw/master/images/ScratchFace.png" width="15%">](https://github.com/memakura/s2face/wiki) [<img alt="Arduino s2aio" src="https://github.com/memakura/s2aio/raw/msi_installer/icons/ScratchArduino.png" width="15%">](https://github.com/memakura/s2aio/wiki) [<img alt="micro:bit s2microbit-ble" src="https://github.com/memakura/s2microbit-ble/raw/master/images/s2microbit-ble.png" width="15%">](https://memakura.github.io/s2microbit-ble/) 
 
 （クリックするとそれぞれの解説ページへ）
 
